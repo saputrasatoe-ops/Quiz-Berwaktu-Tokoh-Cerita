@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Show Tokoh Cerita - Bahasa Indonesia Kelas 4</title>
+    <!-- Tailwind CSS for Responsive Design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Fredoka', 'sans-serif'],
+                        body: ['Quicksand', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            purple: '#6C5CE7',
+                            pink: '#FD79A8',
+                            yellow: '#FDCB6E',
+                            blue: '#74B9FF',
+                            green: '#00B894',
+                            red: '#FF7675',
+                            dark: '#2D3436'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%);
+            min-height: 100vh;
+        }
+        
+        .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 4px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-bounce {
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .btn-bounce:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-bounce:active {
+            transform: translateY(1px);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Heart beat animation */
+        @keyframes heartPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .heart-pulse {
+            animation: heartPulse 0.8s infinite;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-3 sm:p-6 min-h-screen">
+
+    <!-- MAIN CONTAINER -->
+    <div class="w-full max-w-4xl glass-card rounded-3xl p-4 sm:p-8 relative overflow-hidden my-auto">
+        
+        <!-- HEADER METADATA -->
+        <header class="bg-gradient-to-r from-brand-purple to-indigo-600 rounded-2xl p-4 text-white shadow-lg mb-6 border-2 border-white/30">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+                <div class="text-center md:text-left">
+                    <span class="bg-brand-yellow text-slate-800 font-bold px-3 py-1 rounded-full text-xs sm:text-sm tracking-wide inline-block mb-1">
+                        <i class="fa-solid fa-graduation-cap mr-1"></i> Bahasa Indonesia • Kelas 4
+                    </span>
+                    <h1 class="font-heading text-2xl sm:text-3xl font-bold leading-tight">
+                        <i class="fa-solid fa-masks-theater text-brand-yellow mr-2"></i>Kuis Tokoh Cerita
+                    </h1>
+                    <p class="text-xs sm:text-sm text-purple-100 mt-0.5">
+                        Materi: Protagonis, Antagonis, Tritagonis & Figuran
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20 text-center md:text-right shrink-0">
+                    <p class="text-xs text-purple-200 uppercase font-semibold">Guru Pengampu</p>
+                    <p class="font-heading font-bold text-sm sm:text-base text-brand-yellow">
+                        <i class="fa-solid fa-user-tie mr-1"></i> Mashindra Prisma Saputra
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- SCREEN 1: WELCOME SCREEN -->
+        <div id="screen-welcome" class="text-center py-6 sm:py-10">
+            <div class="w-28 h-28 sm:w-36 sm:h-36 bg-brand-yellow/20 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-brand-yellow animate-bounce">
+                <i class="fa-solid fa-gamepad text-5xl sm:text-6xl text-brand-purple"></i>
+            </div>
+            
+            <h2 class="font-heading text-2xl sm:text-4xl font-bold text-slate-800 mb-3">
+                Siap Menjadi Ahli Tokoh Cerita?
+            </h2>
+            <p class="text-slate-600 max-w-lg mx-auto mb-8 text-sm sm:text-base leading-relaxed px-4">
+                Uji pengetahuanmu tentang watak dan peran tokoh dalam cerita! Jawab pertanyaan sebelum waktu habis dan jaga nyawamu.
+            </p>
+
+            <!-- Rules Summary -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto mb-8 text-left text-xs sm:text-sm">
+                <div class="bg-purple-50 p-3 rounded-xl border border-purple-200 flex items-center gap-3">
+                    <i class="fa-solid fa-clock text-2xl text-brand-purple"></i>
+                    <div>
+                        <strong class="block text-slate-800">15 Detik</strong>
+                        <span class="text-slate-500">Waktu per soal</span>
+                    </div>
+                </div>
+                <div class="bg-red-50 p-3 rounded-xl border border-red-200 flex items-center gap-3">
+                    <i class="fa-solid fa-heart text-2xl text-brand-red"></i>
+                    <div>
+                        <strong class="block text-slate-800">3 Nyawa</strong>
+                        <span class="text-slate-500">Kesempatan salah</span>
+                    </div>
+                </div>
+                <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-200 flex items-center gap-3">
+                    <i class="fa-solid fa-trophy text-2xl text-brand-yellow"></i>
+                    <div>
+                        <strong class="block text-slate-800">+10 Poin</strong>
+                        <span class="text-slate-500">Tiap jawaban benar</span>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="startGame()" class="btn-bounce bg-brand-green hover:bg-emerald-600 text-white font-heading font-bold text-xl px-10 py-4 rounded-2xl shadow-lg hover:shadow-xl inline-flex items-center gap-3">
+                <i class="fa-solid fa-play"></i> Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- SCREEN 2: GAMEPLAY SCREEN -->
+        <div id="screen-game" class="hidden">
+            <!-- Game Status Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-100 p-3 sm:p-4 rounded-2xl mb-6 border border-slate-200">
+                <!-- Progress Soal -->
+                <div class="flex items-center gap-2">
+                    <span class="bg-brand-purple text-white text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl font-heading">
+                        Soal <span id="current-question-num">1</span>/10
+                    </span>
+                </div>
+
+                <!-- Timer Display -->
+                <div class="flex items-center gap-2 bg-white px-4 py-1.5 rounded-xl shadow-sm border border-slate-200">
+                    <i class="fa-solid fa-stopwatch text-brand-purple text-lg"></i>
+                    <span id="timer-text" class="font-heading font-bold text-xl text-slate-800 min-w-[2ch]">15</span>
+                    <span class="text-xs text-slate-400 font-semibold">detik</span>
+                </div>
+
+                <!-- Lives & Score -->
+                <div class="flex items-center gap-4">
+                    <!-- Lives -->
+                    <div id="lives-container" class="flex gap-1 text-brand-red text-xl sm:text-2xl">
+                        <i class="fa-solid fa-heart heart-pulse"></i>
+                        <i class="fa-solid fa-heart heart-pulse"></i>
+                        <i class="fa-solid fa-heart heart-pulse"></i>
+                    </div>
+
+                    <!-- Score -->
+                    <div class="bg-brand-yellow text-slate-800 px-3 py-1.5 rounded-xl font-heading font-bold text-sm sm:text-base">
+                        <i class="fa-solid fa-star text-amber-600 mr-1"></i><span id="score-text">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white p-5 sm:p-8 rounded-2xl border-2 border-slate-100 shadow-sm mb-6">
+                <p id="question-text" class="font-heading text-lg sm:text-2xl font-bold text-slate-800 text-center leading-relaxed">
+                    Loading pertanyaan...
+                </p>
+            </div>
+
+            <!-- Options Grid -->
+            <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
+                <!-- Dynamically Generated -->
+            </div>
+
+            <!-- Explanation Box (Hidden initially) -->
+            <div id="explanation-box" class="hidden p-4 rounded-2xl mb-6 bg-blue-50 border-2 border-blue-200 text-blue-900 animate-fadeIn">
+                <div class="flex items-start gap-3">
+                    <i id="explanation-icon" class="fa-solid fa-circle-info text-2xl mt-0.5"></i>
+                    <div>
+                        <h4 id="explanation-title" class="font-heading font-bold text-base mb-1">Pembahasan:</h4>
+                        <p id="explanation-text" class="text-sm leading-relaxed">Penjelasan jawaban akan muncul di sini.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Button -->
+            <div class="text-right">
+                <button id="next-btn" onclick="nextQuestion()" class="hidden btn-bounce bg-brand-purple hover:bg-indigo-700 text-white font-heading font-bold text-base px-6 py-3 rounded-xl shadow-md inline-flex items-center gap-2">
+                    Soal Berikutnya <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: END / RESULT SCREEN -->
+        <div id="screen-result" class="hidden text-center py-6 sm:py-10">
+            <div id="result-icon-container" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full flex items-center justify-center mx-auto mb-4 text-5xl sm:text-6xl shadow-inner">
+                <!-- Trophy or Game Over Icon -->
+            </div>
+
+            <h2 id="result-title" class="font-heading text-3xl sm:text-4xl font-bold text-slate-800 mb-2">
+                Hasil Akhir
+            </h2>
+            <p id="result-message" class="text-slate-600 mb-6 text-sm sm:text-base max-w-md mx-auto px-4">
+                Pesan motivasi akan tampil di sini.
+            </p>
+
+            <!-- Final Stats Box -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto mb-8">
+                <div class="bg-purple-50 border border-purple-200 p-4 rounded-2xl">
+                    <span class="text-xs text-purple-600 uppercase font-bold block mb-1">Total Skor</span>
+                    <span id="final-score" class="font-heading font-bold text-3xl text-brand-purple">0</span>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl">
+                    <span class="text-xs text-emerald-600 uppercase font-bold block mb-1">Jawaban Benar</span>
+                    <span id="final-correct" class="font-heading font-bold text-3xl text-emerald-600">0</span>
+                </div>
+                <div class="bg-rose-50 border border-rose-200 p-4 rounded-2xl">
+                    <span class="text-xs text-rose-600 uppercase font-bold block mb-1">Jawaban Salah</span>
+                    <span id="final-wrong" class="font-heading font-bold text-3xl text-rose-600">0</span>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl">
+                    <span class="text-xs text-amber-600 uppercase font-bold block mb-1">Akurasi</span>
+                    <span id="final-accuracy" class="font-heading font-bold text-3xl text-amber-600">0%</span>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="restartGame()" class="btn-bounce bg-brand-purple hover:bg-indigo-700 text-white font-heading font-bold text-lg px-8 py-3.5 rounded-2xl shadow-lg inline-flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i> Main Lagi
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AUDIO & GAME LOGIC -->
+    <script>
+        /* -------------------------------------------------------------
+         * 1. WEB AUDIO API SOUND EFFECTS (No external audio files needed)
+         * ------------------------------------------------------------- */
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new AudioContext();
+            }
+        }
+
+        function playSound(type) {
+            if (!audioCtx) return;
+            
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+
+            if (type === 'correct') {
+                // Happy Arpeggio
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, now); // C5
+                osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+                osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                osc.start(now);
+                osc.stop(now + 0.4);
+            } else if (type === 'wrong') {
+                // Low Sad Buzz
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, now);
+                osc.frequency.setValueAtTime(130, now + 0.15);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+                osc.start(now);
+                osc.stop(now + 0.35);
+            } else if (type === 'gameover') {
+                // Game Over Melody
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(300, now);
+                osc.frequency.setValueAtTime(250, now + 0.2);
+                osc.frequency.setValueAtTime(200, now + 0.4);
+                osc.frequency.setValueAtTime(150, now + 0.6);
+                gain.gain.setValueAtTime(0.25, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.9);
+                osc.start(now);
+                osc.stop(now + 0.9);
+            } else if (type === 'click') {
+                // Short Click
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, now);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+                osc.start(now);
+                osc.stop(now + 0.05);
+            }
+        }
+
+        /* -------------------------------------------------------------
+         * 2. QUESTION BANK (Bahasa Indonesia - Tokoh Cerita)
+         * ------------------------------------------------------------- */
+        const questionBank = [
+            {
+                question: "Tokoh utama dalam cerita yang memiliki sifat baik hati dan sering didukung oleh pembaca disebut tokoh...",
+                options: ["Antagonis", "Protagonis", "Tritagonis", "Figuran"],
+                answer: 1,
+                explanation: "Protagonis adalah tokoh utama yang membawakan watak terpuji/baik dan biasanya menjadi pusat cerita."
+            },
+            {
+                question: "Tokoh penentang yang sering membuat masalah dan menentang tokoh utama dinamakan tokoh...",
+                options: ["Figuran", "Tritagonis", "Antagonis", "Protagonis"],
+                answer: 2,
+                explanation: "Antagonis adalah tokoh yang berwatak jahat/buruk dan selalu berkonflik dengan tokoh protagonis."
+            },
+            {
+                question: "Tokoh pembantu netral yang berfungsi sebagai penengah atau penasihat antara protagonis dan antagonis adalah...",
+                options: ["Tritagonis", "Figuran", "Utama", "Sampingan"],
+                answer: 0,
+                explanation: "Tritagonis adalah tokoh ketiga yang berperan sebagai penengah atau pembantu yang bersifat netral."
+            },
+            {
+                question: "Tokoh pelengkap yang jumlahnya bisa banyak dan hanya muncul sebentar untuk meramaikan suasana dinamakan...",
+                options: ["Protagonis", "Tritagonis", "Antagonis", "Figuran"],
+                answer: 3,
+                explanation: "Figuran (tokoh pembantu/tambahan) hadir hanya untuk mendukung latar/suasana dan tidak berpengaruh besar pada alur."
+            },
+            {
+                question: "Dalam cerita 'Bawang Merah dan Bawang Putih', Bawang Putih yang sabar dan rajin berperan sebagai tokoh...",
+                options: ["Antagonis", "Protagonis", "Figuran", "Tritagonis"],
+                answer: 1,
+                explanation: "Bawang Putih adalah tokoh utama berwatak baik, sehingga ia berperan sebagai tokoh Protagonis."
+            },
+            {
+                question: "Ibu tiri yang suka menyuruh Bawang Putih bekerja keras tanpa henti dalam cerita tergolong sebagai tokoh...",
+                options: ["Protagonis", "Tritagonis", "Antagonis", "Figuran"],
+                answer: 2,
+                explanation: "Ibu Tiri memiliki sifat jahat dan menindas Bawang Putih, sehingga ia merupakan tokoh Antagonis."
+            },
+            {
+                question: "Seorang kakek bijaksana yang memberi petunjuk jalan kepada pahlawan saat tersesat di hutan biasanya berperan sebagai...",
+                options: ["Antagonis", "Protagonis", "Tritagonis", "Figuran"],
+                answer: 2,
+                explanation: "Kakek bijaksana berperan membantu dan memberi jalan keluar (penengah/penasihat), yaitu sebagai Tritagonis."
+            },
+            {
+                question: "Orang-orang di pasar yang berlarian saat ada pencuri dalam cerita tergolong tokoh...",
+                options: ["Figuran", "Protagonis", "Antagonis", "Tritagonis"],
+                answer: 0,
+                explanation: "Masyarakat pasar hanya sebagai pelengkap suasana latar tempat, sehingga mereka adalah tokoh Figuran."
+            },
+            {
+                question: "Watak tokoh cerita dapat kita ketahui melalui hal-hal berikut, KECUALI...",
+                options: ["Tindakan dan perilaku tokoh", "Dialog atau ucapan tokoh", "Warna baju yang dipakai tokoh", "Pendapat tokoh lain"],
+                answer: 2,
+                explanation: "Watak atau sifat tokoh diketahui dari perilaku, percakapan, dan pikiran tokoh, bukan sekadar warna pakaiannya."
+            },
+            {
+                question: "Mengapa keberadaan tokoh Antagonis penting dalam sebuah cerita?",
+                options: [
+                    "Agar cerita menjadi membosankan",
+                    "Untuk menciptakan konflik dan jalan cerita yang seru",
+                    "Agar tokoh utama tidak perlu muncul",
+                    "Untuk menggantikan posisi pengarang"
+                ],
+                answer: 1,
+                explanation: "Tokoh antagonis menciptakan tantangan/konflik yang membuat jalan cerita menjadi menarik dan menguji sifat baik tokoh utama."
+            }
+        ];
+
+        /* -------------------------------------------------------------
+         * 3. GAME STATE VARIABLES
+         * ------------------------------------------------------------- */
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let lives = 3;
+        let timer = 15;
+        let timerInterval = null;
+        let correctCount = 0;
+        let wrongCount = 0;
+        let isAnswered = false;
+
+        /* -------------------------------------------------------------
+         * 4. GAME ENGINE FUNCTIONS
+         * ------------------------------------------------------------- */
+        function startGame() {
+            initAudio();
+            playSound('click');
+            
+            // Reset state
+            currentQuestionIndex = 0;
+            score = 0;
+            lives = 3;
+            correctCount = 0;
+            wrongCount = 0;
+
+            // Update UI
+            document.getElementById('screen-welcome').classList.add('hidden');
+            document.getElementById('screen-result').classList.add('hidden');
+            document.getElementById('screen-game').classList.remove('hidden');
+
+            updateLivesUI();
+            document.getElementById('score-text').textContent = score;
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            isAnswered = false;
+            clearInterval(timerInterval);
+            timer = 15;
+            document.getElementById('timer-text').textContent = timer;
+
+            const q = questionBank[currentQuestionIndex];
+            
+            // Render Progress & Question
+            document.getElementById('current-question-num').textContent = currentQuestionIndex + 1;
+            document.getElementById('question-text').textContent = q.question;
+
+            // Reset explanation and next button
+            document.getElementById('explanation-box').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+
+            // Render Options
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            const optionLabels = ['A', 'B', 'C', 'D'];
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `btn-option btn-bounce w-full p-4 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 text-left font-semibold text-slate-700 flex items-center gap-3 transition-all text-base sm:text-lg`;
+                btn.onclick = () => checkAnswer(idx);
+                btn.innerHTML = `
+                    <span class="w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center font-heading font-bold shrink-0 border border-slate-300">
+                        ${optionLabels[idx]}
+                    </span>
+                    <span>${opt}</span>
+                `;
+                container.appendChild(btn);
+            });
+
+            // Start Timer
+            startTimer();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timer--;
+                document.getElementById('timer-text').textContent = timer;
+
+                if (timer <= 0) {
+                    clearInterval(timerInterval);
+                    handleTimeOut();
+                }
+            }, 1000);
+        }
+
+        function handleTimeOut() {
+            if (isAnswered) return;
+            isAnswered = true;
+            wrongCount++;
+            lives--;
+            playSound('wrong');
+            updateLivesUI();
+
+            const q = questionBank[currentQuestionIndex];
+            highlightOptions(q.answer, -1);
+
+            showExplanation(false, "Waktu Habis! Kamu tidak sempat memilih jawaban.");
+
+            if (lives <= 0) {
+                setTimeout(endGame, 2000);
+            } else {
+                document.getElementById('next-btn').classList.remove('hidden');
+            }
+        }
+
+        function checkAnswer(selectedIndex) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(timerInterval);
+
+            const q = questionBank[currentQuestionIndex];
+
+            if (selectedIndex === q.answer) {
+                // Correct Answer
+                score += 10;
+                correctCount++;
+                playSound('correct');
+                document.getElementById('score-text').textContent = score;
+                showExplanation(true, q.explanation);
+            } else {
+                // Wrong Answer
+                lives--;
+                wrongCount++;
+                playSound('wrong');
+                updateLivesUI();
+                showExplanation(false, q.explanation);
+            }
+
+            highlightOptions(q.answer, selectedIndex);
+
+            if (lives <= 0) {
+                setTimeout(endGame, 2200);
+            } else {
+                document.getElementById('next-btn').classList.remove('hidden');
+            }
+        }
+
+        function highlightOptions(correctIdx, selectedIdx) {
+            const buttons = document.querySelectorAll('.btn-option');
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-slate-50', 'btn-bounce');
+
+                if (idx === correctIdx) {
+                    btn.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+                    btn.querySelector('span').classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
+                    btn.innerHTML += `<i class="fa-solid fa-circle-check text-emerald-600 ml-auto text-xl"></i>`;
+                } else if (idx === selectedIdx) {
+                    btn.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900');
+                    btn.querySelector('span').classList.add('bg-rose-500', 'text-white', 'border-rose-600');
+                    btn.innerHTML += `<i class="fa-solid fa-circle-xmark text-rose-600 ml-auto text-xl"></i>`;
+                } else {
+                    btn.classList.add('opacity-50');
+                }
+            });
+        }
+
+        function showExplanation(isCorrect, text) {
+            const box = document.getElementById('explanation-box');
+            const icon = document.getElementById('explanation-icon');
+            const title = document.getElementById('explanation-title');
+            const explanationText = document.getElementById('explanation-text');
+
+            box.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-900', 'bg-rose-50', 'border-rose-200', 'text-rose-900', 'bg-blue-50', 'border-blue-200', 'text-blue-900');
+
+            if (isCorrect) {
+                box.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+                icon.className = 'fa-solid fa-circle-check text-2xl text-emerald-600 mt-0.5';
+                title.textContent = 'Hebat, Jawaban Benar!';
+            } else if (timer <= 0) {
+                box.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-900');
+                icon.className = 'fa-solid fa-clock text-2xl text-rose-600 mt-0.5';
+                title.textContent = 'Waktu Habis!';
+            } else {
+                box.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-900');
+                icon.className = 'fa-solid fa-circle-xmark text-2xl text-rose-600 mt-0.5';
+                title.textContent = 'Kurang Tepat!';
+            }
+
+            explanationText.textContent = text;
+        }
+
+        function updateLivesUI() {
+            const container = document.getElementById('lives-container');
+            container.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                if (i < lives) {
+                    container.innerHTML += `<i class="fa-solid fa-heart heart-pulse"></i>`;
+                } else {
+                    container.innerHTML += `<i class="fa-regular fa-heart opacity-30"></i>`;
+                }
+            }
+        }
+
+        function nextQuestion() {
+            playSound('click');
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questionBank.length) {
+                loadQuestion();
+            } else {
+                endGame();
+            }
+        }
+
+        function endGame() {
+            clearInterval(timerInterval);
+            document.getElementById('screen-game').classList.add('hidden');
+            document.getElementById('screen-result').classList.remove('hidden');
+
+            const totalQuestions = questionBank.length;
+            const accuracy = Math.round((correctCount / totalQuestions) * 100);
+
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('final-correct').textContent = correctCount;
+            document.getElementById('final-wrong').textContent = wrongCount;
+            document.getElementById('final-accuracy').textContent = `${accuracy}%`;
+
+            const iconContainer = document.getElementById('result-icon-container');
+            const title = document.getElementById('result-title');
+            const message = document.getElementById('result-message');
+
+            if (lives > 0 && accuracy >= 70) {
+                playSound('correct');
+                iconContainer.className = 'w-24 h-24 sm:w-32 sm:h-32 rounded-full flex items-center justify-center mx-auto mb-4 text-5xl sm:text-6xl shadow-inner bg-amber-100 text-amber-500 border-4 border-amber-300';
+                iconContainer.innerHTML = `<i class="fa-solid fa-trophy"></i>`;
+                title.textContent = "Luar Biasa! 🎉";
+                message.textContent = `Selamat! Kamu memahami karakter tokoh cerita dengan sangat baik. Pak Mashindra bangga padamu!`;
+            } else {
+                playSound('gameover');
+                iconContainer.className = 'w-24 h-24 sm:w-32 sm:h-32 rounded-full flex items-center justify-center mx-auto mb-4 text-5xl sm:text-6xl shadow-inner bg-rose-100 text-rose-500 border-4 border-rose-300';
+                iconContainer.innerHTML = `<i class="fa-solid fa-face-frown"></i>`;
+                title.textContent = lives <= 0 ? "Game Over! 💔" : "Tetap Semangat! 💪";
+                message.textContent = `Jangan menyerah! Pelajari kembali perbedaan Tokoh Protagonis, Antagonis, Tritagonis, dan Figuran lalu coba lagi.`;
+            }
+        }
+
+        function restartGame() {
+            startGame();
+        }
+    </script>
+</body>
+</html>
